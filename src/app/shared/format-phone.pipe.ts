@@ -5,6 +5,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FormatPhonePipe implements PipeTransform {
   transform(value: string, separator = ' '): string {
-    return value.replace(/\./g, separator);
+    return value.replaceAll('.', separator);
   }
 }
