@@ -1,5 +1,5 @@
 <ul>
   <li *ngFor="let animal of animals">
-    {{ animal.name }} - {{ animal.species }}
+    <app-animal-item [model]="animal"></app-animal-item>
   </li>
 </ul>
