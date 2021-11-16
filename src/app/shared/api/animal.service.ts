@@ -1,40 +1,31 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Animal } from './animal';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AnimalService {
-  constructor() {}
+  constructor(private httpClient: HttpClient) {}
 
-  // TypeScript https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys
-  // getAll(): Pick<Animal, 'name' | 'species'>[] {
-  getAll(): Animal[] {
-    return [
-      {
-        name: 'Idéfix',
-        species: 'dog',
-      },
-      {
-        name: 'Chatbus',
-        species: 'cat',
-      },
-      {
-        name: 'Teto',
-        species: 'fox-squirrel',
-      },
-    ] as Animal[];
+  getAll(): Observable<Animal[]> {
+    return this.httpClient.get<Animal[]>('/api/animals');
   }
 
-  get(): Animal {
-    return {
-      name: 'Idéfix',
-      species: 'dog',
-      veterinarian: "Panoramix D'Armorique",
-      comment:
-        'Développe une allergie à la potion magique.\n Provient du service.',
-      email: 'test1@gmail.com',
-      phoneNumber: '06.12.34.56.78',
-    };
+  get(id: number): Observable<Animal> {
+    return this.httpClient.get<Animal>(`/api/animals/${id}`);
+  }
+
+  create(animal: Animal): Observable<Animal> {
+    return this.httpClient.post<Animal>('/api/animals/', animal);
+  }
+
+  update(animal: Animal): Observable<Animal> {
+    return this.httpClient.put<Animal>(`/api/animals/${animal.id}`, animal);
+  }
+
+  delete(id: number): Observable<void> {
+    return this.httpClient.delete<void>(`/api/animals/${id}`);
   }
 }

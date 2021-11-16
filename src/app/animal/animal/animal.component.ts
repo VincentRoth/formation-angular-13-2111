@@ -1,7 +1,6 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Animal } from '../../shared/api/animal';
 import { AnimalService } from '../../shared/api/animal.service';
-import { FormatPhonePipe } from '../../shared/format-phone.pipe';
 
 @Component({
   selector: 'app-animal',
@@ -14,6 +13,8 @@ export class AnimalComponent implements OnInit {
   constructor(private animalService: AnimalService) {}
 
   ngOnInit(): void {
-    this.animal = this.animalService.get();
+    this.animalService.get(1).subscribe((data: Animal) => {
+      this.animal = data;
+    });
   }
 }
