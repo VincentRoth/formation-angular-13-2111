@@ -1,6 +1,9 @@
+<a routerLink="new">Ajouter un vétérinaire</a>
+
 <ul>
   <li *ngFor="let vet of vets">
     <a [routerLink]="[vet.id]">{{ vet.lastName }} {{ vet.firstName }}</a>
+    <a [routerLink]="['edit', vet.id]">Modifier</a>
     <button (click)="removeItem(vet)">Suppression</button>
   </li>
 </ul>
