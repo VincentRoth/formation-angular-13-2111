@@ -1,11 +1,31 @@
-<form (ngSubmit)="onSubmit()" *ngIf="model; else loading">
+<form #animalForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="model; else loading">
   <label for="name">Nom</label>
-  <input type="text" id="name" [(ngModel)]="model.name" name="name" />
+  <input
+    type="text"
+    id="name"
+    [(ngModel)]="model.name"
+    name="name"
+    #nameCtrl="ngModel"
+    required
+  />
   <br />
+  <p *ngIf="animalForm.submitted && nameCtrl.errors?.['required']">
+    Ce champ est requis.
+  </p>
 
   <label for="species">Espèce</label>
-  <input type="text" id="species" [(ngModel)]="model.species" name="species" />
+  <input
+    type="text"
+    id="species"
+    [(ngModel)]="model.species"
+    name="species"
+    #speciesCtrl="ngModel"
+    required
+  />
   <br />
+  <p *ngIf="animalForm.submitted && speciesCtrl.errors?.['required']">
+    Ce champ est requis.
+  </p>
 
   <label for="veterinarian">Vétérinaire</label>
   <input
@@ -13,8 +33,18 @@
     id="veterinarian"
     [(ngModel)]="model.veterinarian"
     name="veterinarian"
+    #vetCtrl="ngModel"
+    required
+    minlength="4"
   />
   <br />
+  <p *ngIf="animalForm.submitted && vetCtrl.errors?.['required']">
+    Ce champ est requis.
+  </p>
+  <p *ngIf="animalForm.submitted && vetCtrl.errors?.['minlength']">
+    Ce champ nécessite
+    {{ vetCtrl.errors?.['minlength'].requiredLength }} caractères.
+  </p>
 
   <label for="email">Email</label>
   <input type="email" id="email" [(ngModel)]="model.email" name="email" />
