@@ -1,4 +1,4 @@
 <a [routerLink]="[model.id]">{{ model.name }}</a> -
 {{ model.species }}
-
+<a [routerLink]="['edit', model.id]">Modifier</a>
 <button (click)="deleteItem($event)">Suppression</button>
