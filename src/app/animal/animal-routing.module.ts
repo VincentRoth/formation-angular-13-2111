@@ -11,6 +11,7 @@ const routes: Routes = [
     children: [
       { path: '', component: AnimalListComponent },
       { path: ':id', component: AnimalComponent },
+      { path: '**', component: AnimalListComponent },
     ],
   },
 ];
