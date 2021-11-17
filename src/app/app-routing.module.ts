@@ -1,7 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [{ path: '', redirectTo: 'animals', pathMatch: 'full' }];
+const routes: Routes = [
+  { path: '', redirectTo: 'animals', pathMatch: 'full' },
+  {
+    path: 'veterinarians',
+    loadChildren: () =>
+      import('./veterinarian/veterinarian.module').then(
+        (mod) => mod.VeterinarianModule
+      ),
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

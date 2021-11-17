@@ -1,20 +1,20 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Animal } from '../../shared/api/animal';
-import { AnimalService } from '../../shared/api/animal.service';
+import { Veterinarian } from '../../shared/api/veterinarian';
+import { VeterinarianService } from '../../shared/api/veterinarian.service';
 
 @Component({
-  selector: 'app-animal',
-  templateUrl: './animal.component.html',
-  styleUrls: ['./animal.component.scss'],
+  selector: 'app-vet-detail',
+  templateUrl: './vet-detail.component.html',
+  styleUrls: ['./vet-detail.component.scss'],
 })
-export class AnimalComponent implements OnInit, OnDestroy {
-  animal: Animal;
+export class VetDetailComponent implements OnInit, OnDestroy {
+  vet: Veterinarian;
   private subscription: Subscription;
 
   constructor(
-    private animalService: AnimalService,
+    private vetService: VeterinarianService,
     private activatedRoute: ActivatedRoute
   ) {}
 
@@ -23,8 +23,8 @@ export class AnimalComponent implements OnInit, OnDestroy {
       (paramMap: ParamMap) => {
         const id = Number(paramMap.get('id'));
 
-        this.animalService.get(id).subscribe((data: Animal) => {
-          this.animal = data;
+        this.vetService.get(id).subscribe((data: Veterinarian) => {
+          this.vet = data;
         });
       }
     );

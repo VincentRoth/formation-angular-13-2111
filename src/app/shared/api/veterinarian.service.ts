@@ -1,12 +1,12 @@
 import { Injectable, Injector } from '@angular/core';
 import { AbstractCrudService } from './abstract-crud.service';
-import { Animal } from './animal';
+import { Veterinarian } from './veterinarian';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AnimalService extends AbstractCrudService<Animal> {
+export class VeterinarianService extends AbstractCrudService<Veterinarian> {
   constructor(injector: Injector) {
-    super(injector, 'animals');
+    super(injector, 'veterinarians');
   }
 }
