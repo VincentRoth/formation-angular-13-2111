@@ -1,0 +1,8 @@
+{
+  "animal": {
+    "name": "Nom : {{name}}",
+    "form": {
+      "name": "Nom"
+    }
+  }
+}

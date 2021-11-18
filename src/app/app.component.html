@@ -4,6 +4,8 @@
     <a mat-button routerLink="/">Accueil</a>
     <a mat-button routerLink="/veterinarians">Vétérinaires</a>
   </nav>
+  <button mat-button (click)="changeLang('fr')">FR</button>
+  <button mat-button (click)="changeLang('en')">EN</button>
 </mat-toolbar>
 
 <h2>Environnement de {{ getEnv() }}</h2>
