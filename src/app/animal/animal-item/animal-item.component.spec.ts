@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { AnimalItemComponent } from './animal-item.component';
 
@@ -8,14 +9,22 @@ describe('AnimalItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AnimalItemComponent ]
-    })
-    .compileComponents();
+      declarations: [AnimalItemComponent],
+      imports: [RouterTestingModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AnimalItemComponent);
     component = fixture.componentInstance;
+    component.model = {
+      name: 'Toto',
+      comment: '',
+      email: '',
+      phoneNumber: '',
+      species: 'cat',
+      veterinarian: '',
+    };
     fixture.detectChanges();
   });
 
