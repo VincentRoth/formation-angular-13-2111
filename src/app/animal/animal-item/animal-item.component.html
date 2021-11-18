@@ -1,4 +1,9 @@
-<a [routerLink]="[model.id]">{{ model.name }}</a> -
-{{ model.species }}
-<a [routerLink]="['edit', model.id]">Modifier</a>
-<button (click)="deleteItem($event)">Suppression</button>
+<mat-card>
+  <mat-card-title>{{ model.name }}</mat-card-title>
+  <mat-card-subtitle>{{ model.species }}</mat-card-subtitle>
+  <mat-card-actions>
+    <a [routerLink]="[model.id]">Voir</a>
+    <a [routerLink]="['edit', model.id]">Modifier</a>
+    <button (click)="deleteItem($event)">Suppression</button>
+  </mat-card-actions>
+</mat-card>

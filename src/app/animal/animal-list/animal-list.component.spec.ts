@@ -3,6 +3,7 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
+import { MatCardModule } from '@angular/material/card';
 
 import { AnimalListComponent } from './animal-list.component';
 import { AnimalItemComponent } from '../animal-item/animal-item.component';
@@ -16,7 +17,7 @@ describe('AnimalListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AnimalListComponent, AnimalItemComponent],
-      imports: [HttpClientTestingModule, RouterTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule, MatCardModule],
     }).compileComponents();
     httpCtrl = TestBed.inject(HttpTestingController);
   });
